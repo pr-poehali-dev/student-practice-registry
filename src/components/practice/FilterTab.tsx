@@ -75,12 +75,12 @@ export default function FilterTab({ filters, setFilters, practices }: FilterTabP
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label>Год практики</Label>
-                <Select value={filters.year} onValueChange={(value) => setFilters({...filters, year: value})}>
+                <Select value={filters.year || 'all'} onValueChange={(value) => setFilters({...filters, year: value === 'all' ? '' : value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Все годы" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Все годы</SelectItem>
+                    <SelectItem value="all">Все годы</SelectItem>
                     {uniqueYears.map(year => (
                       <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
                     ))}
@@ -90,12 +90,12 @@ export default function FilterTab({ filters, setFilters, practices }: FilterTabP
 
               <div className="space-y-2">
                 <Label>Статус практики</Label>
-                <Select value={filters.status} onValueChange={(value) => setFilters({...filters, status: value})}>
+                <Select value={filters.status || 'all'} onValueChange={(value) => setFilters({...filters, status: value === 'all' ? '' : value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Все статусы" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Все статусы</SelectItem>
+                    <SelectItem value="all">Все статусы</SelectItem>
                     <SelectItem value="Планируется">Планируется</SelectItem>
                     <SelectItem value="В процессе">В процессе</SelectItem>
                     <SelectItem value="Завершена">Завершена</SelectItem>
@@ -106,12 +106,12 @@ export default function FilterTab({ filters, setFilters, practices }: FilterTabP
 
               <div className="space-y-2">
                 <Label>Вид практики</Label>
-                <Select value={filters.type} onValueChange={(value) => setFilters({...filters, type: value})}>
+                <Select value={filters.type || 'all'} onValueChange={(value) => setFilters({...filters, type: value === 'all' ? '' : value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Все виды" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Все виды</SelectItem>
+                    <SelectItem value="all">Все виды</SelectItem>
                     {uniqueTypes.map(type => (
                       <SelectItem key={type} value={type}>{type}</SelectItem>
                     ))}
@@ -129,12 +129,12 @@ export default function FilterTab({ filters, setFilters, practices }: FilterTabP
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Учебное заведение</Label>
-                <Select value={filters.university} onValueChange={(value) => setFilters({...filters, university: value})}>
+                <Select value={filters.university || 'all'} onValueChange={(value) => setFilters({...filters, university: value === 'all' ? '' : value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Все ВУЗы" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Все ВУЗы</SelectItem>
+                    <SelectItem value="all">Все ВУЗы</SelectItem>
                     {uniqueUniversities.map(uni => (
                       <SelectItem key={uni} value={uni}>{uni}</SelectItem>
                     ))}
@@ -144,12 +144,12 @@ export default function FilterTab({ filters, setFilters, practices }: FilterTabP
 
               <div className="space-y-2">
                 <Label>Факультет</Label>
-                <Select value={filters.faculty} onValueChange={(value) => setFilters({...filters, faculty: value})}>
+                <Select value={filters.faculty || 'all'} onValueChange={(value) => setFilters({...filters, faculty: value === 'all' ? '' : value})}>
                   <SelectTrigger>
                     <SelectValue placeholder="Все факультеты" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Все факультеты</SelectItem>
+                    <SelectItem value="all">Все факультеты</SelectItem>
                     {uniqueFaculties.map(fac => (
                       <SelectItem key={fac} value={fac}>{fac}</SelectItem>
                     ))}
