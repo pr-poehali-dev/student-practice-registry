@@ -189,28 +189,36 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Icon name="GraduationCap" className="text-white" size={24} />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex flex-col">
+      <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-gradient-to-br from-primary to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+                <Icon name="GraduationCap" className="text-white" size={28} />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-slate-900">Реестр учебных практик</h1>
-                <p className="text-sm text-slate-500">Система управления практиками студентов</p>
+                <h1 className="text-2xl font-bold text-slate-900">Реестр учебных практик</h1>
+                <p className="text-sm text-slate-600">Система управления практиками студентов</p>
               </div>
             </div>
-            <Button onClick={() => setIsAddDialogOpen(true)} className="gap-2">
+            <nav className="hidden md:flex items-center gap-6">
+              <a href="#" className="text-slate-600 hover:text-primary transition-colors font-medium">Главная</a>
+              <a href="#" className="text-slate-600 hover:text-primary transition-colors font-medium">О системе</a>
+              <a href="#" className="text-slate-600 hover:text-primary transition-colors font-medium">Помощь</a>
+              <Button onClick={() => setIsAddDialogOpen(true)} className="gap-2 shadow-md">
+                <Icon name="Plus" size={18} />
+                Добавить практику
+              </Button>
+            </nav>
+            <Button onClick={() => setIsAddDialogOpen(true)} className="md:hidden gap-2">
               <Icon name="Plus" size={18} />
-              Добавить практику
             </Button>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-6 py-8">
+      <main className="flex-1 container mx-auto px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full max-w-2xl grid-cols-4 bg-white border border-slate-200">
             <TabsTrigger value="dashboard" className="gap-2">
@@ -576,7 +584,69 @@ export default function Index() {
             </Card>
           </TabsContent>
         </Tabs>
-      </div>
+      </main>
+
+      <footer className="bg-white border-t border-slate-200 mt-12">
+        <div className="container mx-auto px-6 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
+                  <Icon name="GraduationCap" className="text-white" size={20} />
+                </div>
+                <span className="font-bold text-slate-900">Реестр практик</span>
+              </div>
+              <p className="text-sm text-slate-600">Единая информационная система управления учебными практиками студентов</p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-slate-900 mb-4">Разделы</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Главная</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Реестр практик</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Организации</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Управление</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-slate-900 mb-4">Поддержка</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Документация</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Инструкции</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">FAQ</a></li>
+                <li><a href="#" className="text-slate-600 hover:text-primary transition-colors">Техподдержка</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold text-slate-900 mb-4">Контакты</h3>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center gap-2 text-slate-600">
+                  <Icon name="Mail" size={16} className="text-primary" />
+                  support@practices.edu
+                </li>
+                <li className="flex items-center gap-2 text-slate-600">
+                  <Icon name="Phone" size={16} className="text-primary" />
+                  +7 (495) 123-45-67
+                </li>
+                <li className="flex items-center gap-2 text-slate-600">
+                  <Icon name="MapPin" size={16} className="text-primary" />
+                  Москва, ул. Примерная, 1
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-slate-200 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-slate-500">© 2024 Реестр учебных практик. Все права защищены.</p>
+            <div className="flex items-center gap-4 text-sm">
+              <a href="#" className="text-slate-500 hover:text-primary transition-colors">Политика конфиденциальности</a>
+              <a href="#" className="text-slate-500 hover:text-primary transition-colors">Условия использования</a>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
